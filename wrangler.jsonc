@@ -1,31 +1,34 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "freetime",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2026-08-24",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "observability": {
-    "enabled": true
-  },
-  // Non-secret configuration. Secrets (AUTH_SECRET, AUTH_GOOGLE_ID,
-  // AUTH_GOOGLE_SECRET) are set with `wrangler secret put <NAME>` instead.
-  "vars": {
-    "ALLOWED_EMAIL_DOMAIN": "andrew.cmu.edu",
-    // Sender for invitation email. The domain must be verified in Resend.
-    "EMAIL_FROM": "FreeTime <invites@yourdomain.edu>"
-    // APP_URL is also read for email links; set it to your deployed origin.
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "freetime-db",
-      // Replace with the id printed by: wrangler d1 create freetime-db
-      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
-      "migrations_dir": "migrations"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "freetime",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-08-24",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	// Non-secret configuration. Secrets (AUTH_SECRET, AUTH_GOOGLE_ID,
+	// AUTH_GOOGLE_SECRET) are set with `wrangler secret put <NAME>` instead.
+	"vars": {
+		"ALLOWED_EMAIL_DOMAIN": "andrew.cmu.edu",
+		// Sender for invitation email. The domain must be verified in Resend.
+		"EMAIL_FROM": "FreeTime <invites@yourdomain.edu>"
+		// APP_URL is also read for email links; set it to your deployed origin.
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "freetime-db",
+			// Replace with the id printed by: wrangler d1 create freetime-db
+			"database_id": "8bcb3301-53ca-4cb2-9738-82a13c3cce95",
+			"migrations_dir": "migrations"
+		}
+	]
 }
