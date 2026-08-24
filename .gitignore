@@ -1,0 +1,18 @@
+node_modules/
+.next/
+.open-next/
+out/
+build/
+
+# Secrets
+.dev.vars
+.env
+.env*.local
+
+# Wrangler / local D1 state
+.wrangler/
+
+# Misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
