@@ -1,0 +1,1 @@
+This folder contains the built output assets for the worker "freetime" generated at 2026-08-25T01:08:30.658Z.
