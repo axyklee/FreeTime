@@ -64,13 +64,11 @@ export default async function WelcomePage() {
             .
           </Step>
           <Step n={2}>
-            Find your schedule for the current term and look for an option to{" "}
-            <strong>export</strong>, <strong>download</strong>, or{" "}
-            <strong>add to calendar</strong>.
+            Find your schedule for the current term (Course Schedule ... Semester Schedule).
           </Step>
           <Step n={3}>
-            Choose <strong>iCalendar</strong> (a file ending in <Code>.ics</Code>). Save it, then
-            upload it below.
+            Choose <strong>Calendar Export</strong> and it will download a file ending in
+            <Code>.ics</Code>. Save it, then upload it below.
           </Step>
         </ol>
 
