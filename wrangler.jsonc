@@ -19,8 +19,9 @@
 	"vars": {
 		"ALLOWED_EMAIL_DOMAIN": "andrew.cmu.edu",
 		// Sender for invitation email. The domain must be verified in Resend.
-		"EMAIL_FROM": "FreeTime <freetime@rsnd.ayklee.com>"
+		"EMAIL_FROM": "FreeTime <freetime@rsnd.ayklee.com>",
 		// APP_URL is also read for email links; set it to your deployed origin.
+		"APP_URL": "https://ft.ayklee.com"
 	},
 	"d1_databases": [
 		{
