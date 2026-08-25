@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import { getIncomingInvites } from "@/lib/queries";
@@ -21,6 +24,10 @@ export default async function WelcomePage() {
     getIncomingInvites(user.email),
     allowedEmailDomain(),
   ]);
+
+  // Rendered only if the file is actually present, so dropping a screenshot in
+  // is all it takes -- and its absence shows nothing rather than a broken image.
+  const screenshot = findScreenshot();
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -74,6 +81,23 @@ export default async function WelcomePage() {
           </Step>
         </ol>
 
+        {screenshot && (
+          <figure className="mt-4">
+            <Image
+              src={screenshot}
+              alt="The export option in SIO, on the course schedule page"
+              width={932}
+              height={698}
+              className="h-auto w-full rounded-lg"
+              style={{ border: "1px solid var(--border)" }}
+              priority
+            />
+            <figcaption className="mt-2 text-xs" style={{ color: "var(--text-faint)" }}>
+              Where to find the export option.
+            </figcaption>
+          </figure>
+        )}
+
         <div className="mt-5">
           <UploadForm hasExisting={false} redirectTo="/groups" submitLabel="Upload and continue" />
         </div>
@@ -98,6 +122,19 @@ export default async function WelcomePage() {
       </section>
     </div>
   );
+}
+
+/**
+ * Looks for an export screenshot in `public/screenshots`, taking the first
+ * format that exists. Checked on the server at render time so the page never
+ * ships an <img> pointing at a file nobody has added yet.
+ */
+function findScreenshot(): string | null {
+  for (const ext of ["png", "jpg", "jpeg", "webp"]) {
+    const relative = `/screenshots/sio-export.${ext}`;
+    if (existsSync(join(process.cwd(), "public", relative))) return relative;
+  }
+  return null;
 }
 
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
