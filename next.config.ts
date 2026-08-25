@@ -6,13 +6,6 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: { bodySizeLimit: "2mb" },
   },
-  images: {
-    // Next's default image optimizer needs sharp and a Node runtime, neither of
-    // which exists on Workers, so `next/image` would fail at request time.
-    // Serving the file as-is from the ASSETS binding is the right trade for
-    // a handful of static screenshots.
-    unoptimized: true,
-  },
 };
 
 export default nextConfig;
